@@ -1,5 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const blogRouter = require('./Rotas/rotas');
 
 const  PORT = process.env.PORT || 8081;
 const app = express();
@@ -19,6 +20,8 @@ mongoose.connect(
 
 
 app.use(express.json());
+
+app.use("/api/blog", blogRouter)
 
 app.listen(PORT, () => {
     console.log('Server is running on port :' + PORT);
